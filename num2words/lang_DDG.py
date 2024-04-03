@@ -47,15 +47,15 @@ class Num2Word_DDG(Num2Word_EU):
         self.exclude_title = ["resin", "vírgula", "menus"]
 
         self.mid_numwords = [
-            (1000, "rihun"), (100, "atus"), (90, "sianulu"),
-            (80, "walunulu"), (70, "hitunulu"), (60, "neenulu"),
-            (50, "limanulu"), (40, "haatnulu"), (30, "tolunulu"),
-            (20, "ruanulu")
+            (1000, "rahukani"), (100, "taan ukani"), (90, "taan siwa"),
+            (80, "taan kafa"), (70, "taan fitu"), (60, "taan neme"),
+            (50, "taan lime"), (40, "taan fate"), (30, "taan utue"),
+            (20, "taan ece")
         ]
         self.low_numwords = [
-            "sanulu",
-            "sia", "walu", "hitu", "neen", "lima", "haat", "tolu", "rua",
-            "ida", "mamuk"
+            "ta’ane",
+            "siwa", "kafa", "fitu", "neme", "lime", "fate", "utue", "ece",
+            "ukani", "kaare"
         ]
         self.ords = [
             {
@@ -219,5 +219,5 @@ class Num2Word_DDG(Num2Word_EU):
                     f'{ext}', f'{ext}', 1
                 )
         # do not print "e zero cêntimos"
-        result = result.replace(' resin mamuk cêntimus', '')
+        result = result.replace(' resin kaare cêntimus', '')
         return result
