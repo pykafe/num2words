@@ -83,6 +83,7 @@ Besides the numerical argument, there are two main optional arguments, ``to:`` a
 * ``cz`` (Czech)
 * ``de`` (German)
 * ``dk`` (Danish)
+* ``ddg`` (Fataluku)
 * ``en_GB`` (English - Great Britain)
 * ``en_IN`` (English - India)
 * ``en_NG`` (English - Nigeria)
