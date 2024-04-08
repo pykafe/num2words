@@ -51,7 +51,7 @@ CONVERTER_CLASSES = {
     'id': lang_ID.Num2Word_ID(),
     'ja': lang_JA.Num2Word_JA(),
     'kn': lang_KN.Num2Word_KN(),
-    'kem': lang_KMK.Num2Word_KMK(),
+    'kmk': lang_KMK.Num2Word_KMK(),
     'ko': lang_KO.Num2Word_KO(),
     'kz': lang_KZ.Num2Word_KZ(),
     'lt': lang_LT.Num2Word_LT(),
