@@ -48,9 +48,9 @@ class Num2Word_MGM_NC(Num2Word_EU):
         self.exclude_title = ["resi", "vírgula", "menus"]
 
         self.mid_numwords = [
-            (1000, "rihun"), (100, "atus"), (90, "sianull"),
-            (80, "ualunull"), (70, "hitunull"), (60, "neennull"),
-            (50, "liimnuul"), (40, "faatnuul"), (30, "teulnuul"),
+            (1000, "rihun"), (100, "atus"), (90, "sia null"),
+            (80, "ualu null"), (70, "hitu null"), (60, "neen null"),
+            (50, "liim nuul"), (40, "faat nuul"), (30, "teul nuul"),
             (20, "rua nuul")
         ]
         self.low_numwords = [
@@ -74,26 +74,26 @@ class Num2Word_MGM_NC(Num2Word_EU):
             {
                 0: "",
                 1: "dasakuul",
-                2: "daruanull",
-                3: "dateulnull",
-                4: "dafaatnull",
-                5: "daliimnull",
-                6: "daneennull",
-                7: "dahitunull",
-                8: "daualunull",
-                9: "dasianull",
+                2: "darua null",
+                3: "dateul null",
+                4: "dafaat null",
+                5: "daliim null",
+                6: "daneen null",
+                7: "dahitu null",
+                8: "daualu null",
+                9: "dasia null",
             },
             {
                 0: "",
-                1: "daatusiid",
-                2: "daatusruu",
-                3: "daatusteul",
-                4: "daatusfaat",
-                5: "daatusliim",
-                6: "daatusneen",
-                7: "daatushitu",
-                8: "daatusualu",
-                9: "daatussia",
+                1: "daatus iid",
+                2: "daatus ruu",
+                3: "daatus teul",
+                4: "daatus faat",
+                5: "daatus liim",
+                6: "daatus neen",
+                7: "daatus hitu",
+                8: "daatus ualu",
+                9: "daatus sia",
             },
         ]
         self.thousand_separators = {
