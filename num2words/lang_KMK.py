@@ -22,7 +22,7 @@ import re
 from .lang_EU import Num2Word_EU
 
 DOLLAR = ('dolar', 'dolar')
-CENTS = ('cêntimu', 'cêntimus')
+CENTS = ('sentavu', 'sentavu')
 
 
 class Num2Word_KMK(Num2Word_EU):
