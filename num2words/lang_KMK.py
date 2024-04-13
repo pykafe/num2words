@@ -31,7 +31,7 @@ class Num2Word_KMK(Num2Word_EU):
         'AUD': (DOLLAR, CENTS),
         'CAD': (DOLLAR, CENTS),
         'EUR': (('euro', 'euros'), CENTS),
-        'GBP': (('libra', 'libras'), ('péni', 'pence')),
+        'GBP': (('pound sterling', 'pound sterling'), ('pence', 'pence')),
         'USD': (DOLLAR, CENTS),
     }
 
