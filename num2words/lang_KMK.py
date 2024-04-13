@@ -21,7 +21,7 @@ import re
 
 from .lang_EU import Num2Word_EU
 
-DOLLAR = ('dólar', 'dólares')
+DOLLAR = ('dolar', 'dolar')
 CENTS = ('cêntimu', 'cêntimus')
 
 
