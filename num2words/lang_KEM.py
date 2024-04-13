@@ -25,7 +25,7 @@ DOLLAR = ('dolar', 'dolar')
 CENTS = ('sentavu', 'sentavu')
 
 
-class Num2Word_KMK(Num2Word_EU):
+class Num2Word_KEM(Num2Word_EU):
 
     CURRENCY_FORMS = {
         'AUD': (DOLLAR, CENTS),

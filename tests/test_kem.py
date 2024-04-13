@@ -21,13 +21,13 @@ from decimal import Decimal
 from unittest import TestCase, skip
 
 from num2words import num2words
-from num2words.lang_KMK import Num2Word_KMK
+from num2words.lang_KEM import Num2Word_KEM
 
 
-class Num2WordsKMKTest(TestCase):
+class Num2WordsKEMTest(TestCase):
     def setUp(self):
         super().setUp()
-        self.n2w = Num2Word_KMK()
+        self.n2w = Num2Word_KEM()
 
     def test_cardinal_integer(self):
         self.assertEqual(num2words(1, lang='kmk'), 'sia')
