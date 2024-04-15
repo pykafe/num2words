@@ -131,11 +131,6 @@ class Num2Word_KEM(Num2Word_EU):
     def to_cardinal(self, value):
         result = super().to_cardinal(value)
 
-        # Transforms "mil e cento e catorze" into "mil cento e catorze"
-        # Transforms "cem milhões e duzentos mil e duzentos e dez" em "cem
-        # milhões duzentos mil duzentos e dez" but "cem milhões e duzentos
-        # mil e duzentos" in "cem milhões duzentos mil e duzentos" and not in
-        # "cem milhões duzentos mil duzentos"
         for ext in (
                 'ribun', 'miliaun', 'miliaun ribun',
                 'biliaun', 'biliaun ribun'):
@@ -146,17 +141,8 @@ class Num2Word_KEM(Num2Word_EU):
 
         return result
 
-    # for the ordinal conversion the code is similar to pt_BR code,
-    # although there are other rules that are probably more correct in
-    # Portugal. Concerning numbers from 2000th on, saying "dois
-    # milésimos" instead of "segundo milésimo" (the first number
-    # would be used in the cardinal form instead of the ordinal) is better.
-    # This was not implemented.
-    # source:
-    # https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-forma-por-extenso-de-2000-e-de-outros-ordinais/16428
     def to_ordinal(self, value):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
+
         self.verify_ordinal(value)
 
         result = []
@@ -168,8 +154,6 @@ class Num2Word_KEM(Num2Word_EU):
                 thousand_separator = self.thousand_separators[idx]
 
             if char != '0' and thousand_separator:
-                # avoiding "segundo milionésimo milésimo" for 6000000,
-                # for instance
                 result.append(thousand_separator)
                 thousand_separator = ''
 
@@ -180,36 +164,28 @@ class Num2Word_KEM(Num2Word_EU):
         result = re.sub('\\s+', ' ', result)
 
         if result.startswith('primeiru') and value != '1':
-            # avoiding "primeiro milésimo", "primeiro milionésimo" and so on
             result = result[9:]
 
         return result
 
     def to_ordinal_num(self, value):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
         self.verify_ordinal(value)
         return "%sº" % (value)
 
     def to_year(self, val, longval=True):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
         if val < 0:
             return self.to_cardinal(abs(val)) + ' baipila eh Kristu'
         return self.to_cardinal(val)
 
     def to_currency(self, val, currency='USD', cents=True, separator=' resin',
                     adjective=False):
-        # change negword because base.to_currency() does not need space after
         backup_negword = self.negword
         self.negword = self.negword[:-1]
         result = super().to_currency(
             val, currency=currency, cents=cents, separator=separator,
             adjective=adjective)
-        # undo the change on negword
         self.negword = backup_negword
 
-        # transforms "milhões euros" em "milhões de euros"
         cr1, _ = self.CURRENCY_FORMS[currency]
 
         for ext in (
@@ -218,6 +194,5 @@ class Num2Word_KEM(Num2Word_EU):
                 result = result.replace(
                     f'{ext}', f'{ext}', 1
                 )
-        # do not print "e zero cêntimos"
         result = result.replace(' resin bai cêntimus', '')
         return result
