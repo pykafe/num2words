@@ -361,18 +361,18 @@ class Num2WordsMGMTest(TestCase):
             self.n2w.to_currency(1.00, currency='CHF')
 
     def test_currency_integer_negative(self):
-        self.assertEqual(self.n2w.to_currency(-1.00), 'menus id dólar')
+        self.assertEqual(self.n2w.to_currency(-1.00), 'menus dolar iid')
         self.assertEqual(
             self.n2w.to_currency(-256.00),
-            'menus atusid ru gullim resi hohonid dólares'
+            'menus dolar atus ruu liim nuul resi neen'
         )
-        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus rihunid id dólares')
+        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus dolar rihun iid')
         self.assertEqual(
-            self.n2w.to_currency(-1000000.00), 'menus miliaunid id dólares'
+            self.n2w.to_currency(-1000000.00), 'menus dolar miliaun iid'
         )
         self.assertEqual(
             self.n2w.to_currency(-1234567.00),
-            'menus miliaunid id rihunid atusid ru gulteil resi pat atusid lim gulhohonid resi hohoru dólares'
+            'menus dolar miliaun iid rihun atus ruu teul nuul resi faat atus liim neen nuul resi hitu'
         )
 
     def test_currency_float(self):
