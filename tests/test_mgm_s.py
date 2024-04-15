@@ -127,57 +127,57 @@ class Num2WordsMGMTest(TestCase):
         )
 
     def test_cardinal_integer_negative(self):
-        self.assertEqual(num2words(-1, lang='mgm'), 'menus id')
+        self.assertEqual(num2words(-1, lang='mgm-S'), 'menus iid')
         self.assertEqual(
-            num2words(-256, lang='mgm'), 'menus atusid ru gullim resi hohonid'
+            num2words(-256, lang='mgm-S'), 'menus atus ruu saguul haet liim resi liim nai-ida'
         )
-        self.assertEqual(num2words(-1000, lang='mgm'), 'menus rihunid id')
-        self.assertEqual(num2words(-1000000, lang='mgm'), 'menus miliaunid id')
+        self.assertEqual(num2words(-1000, lang='mgm-S'), 'menus rihun iid')
+        self.assertEqual(num2words(-1000000, lang='mgm-S'), 'menus miliaun iid')
         self.assertEqual(
-            num2words(-1234567, lang='mgm'),
-            'menus miliaunid id rihunid atusid ru gulteil resi pat atusid lim gulhohonid resi hohoru'
+            num2words(-1234567, lang='mgm-S'),
+            'menus miliaun iid rihun atus ruu saguul haet teul resi faat atus liim saguul haet liim nai-ida resi liim nai-rua'
         )
 
     def test_cardinal_float(self):
-        self.assertEqual(num2words(Decimal('1.00'), lang='mgm'), 'id')
+        self.assertEqual(num2words(Decimal('1.00'), lang='mgm-S'), 'iid')
         self.assertEqual(num2words(
-            Decimal('1.01'), lang='mgm'), 'id vírgula mamu id')
+            Decimal('1.01'), lang='mgm-S'), 'iid vírgula mamu iid')
         self.assertEqual(num2words(
-            Decimal('1.035'), lang='mgm'), 'id vírgula mamu teil lim'
+            Decimal('1.035'), lang='mgm-S'), 'iid vírgula mamu teul liim'
         )
         self.assertEqual(num2words(
-            Decimal('1.35'), lang='mgm'), 'id vírgula teil lim'
+            Decimal('1.35'), lang='mgm-S'), 'iid vírgula teul liim'
         )
         self.assertEqual(
-            num2words(Decimal('3.14159'), lang='mgm'),
-            'teil vírgula id pat id lim hohopat'
+            num2words(Decimal('3.14159'), lang='mgm-S'),
+            'teul vírgula iid faat iid liim liim nai-fata'
         )
         self.assertEqual(
-            num2words(Decimal('101.22'), lang='mgm'),
-            'atusid id resi id vírgula ru ru'
+            num2words(Decimal('101.22'), lang='mgm-S'),
+            'atus iid resi iid vírgula ruu ruu'
         )
         self.assertEqual(
-            num2words(Decimal('2345.75'), lang='mgm'),
-            'rihunid ru atusid teil gulpat resi lim vírgula hohoru lim'
+            num2words(Decimal('2345.75'), lang='mgm-S'),
+            'rihun ruu atus teul saguul haet faat resi liim vírgula liim nai-rua liim'
         )
 
 
     def test_cardinal_float_negative(self):
         self.assertEqual(
-            num2words(Decimal('-2.34'), lang='mgm'),
-            'menus ru vírgula teil pat'
+            num2words(Decimal('-2.34'), lang='mgm-S'),
+            'menus ruu vírgula teul faat'
         )
         self.assertEqual(
-            num2words(Decimal('-9.99'), lang='mgm'),
-            'menus hohopat vírgula hohopat hohopat'
+            num2words(Decimal('-9.99'), lang='mgm-S'),
+            'menus liim nai-fata vírgula liim nai-fata liim nai-fata'
         )
         self.assertEqual(
-            num2words(Decimal('-7.01'), lang='mgm'),
-            'menus hohoru vírgula mamu id'
+            num2words(Decimal('-7.01'), lang='mgm-S'),
+            'menus liim nai-rua vírgula mamu iid'
         )
         self.assertEqual(
-            num2words(Decimal('-222.22'), lang='mgm'),
-            'menus atusid ru gulru resi ru vírgula ru ru'
+            num2words(Decimal('-222.22'), lang='mgm-S'),
+            'menus atus ruu saguul haet rua resi ruu vírgula ruu ruu'
         )
 
     def test_ordinal(self):
