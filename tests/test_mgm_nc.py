@@ -376,28 +376,28 @@ class Num2WordsMGMTest(TestCase):
         )
 
     def test_currency_float(self):
-        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'id dólar')
+        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'dolar iid')
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.01')), 'id dólar resi id cêntimu'
+            self.n2w.to_currency(Decimal('1.01')), 'dolar iid sentavu iid'
         )
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.03')), 'id dólar resi teil cêntimus'
+            self.n2w.to_currency(Decimal('1.03')), 'dolar iid sentavu teul'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('1.35')),
-            'id dólar resi gulteil resi lim cêntimus'
+            'dolar iid sentavu teul nuul resi liim'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('3.14')),
-            'teil dólares resi sagul resi pat cêntimus'
+            'dolar teul sentavu sakuul resi faat'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('101.22')),
-            'atusid id resi id dólares resi gulru resi ru cêntimus'
+            'dolar atus iid resi iid sentavu rua nuul resi ruu'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('2345.75')),
-            'rihunid ru atusid teil gulpat resi lim dólares resi gulhohoru resi lim cêntimus'
+            'dolar rihun ruu atus teul faat nuul resi liim sentavu hitu nuul resi liim'
 
         )
 
