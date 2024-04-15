@@ -420,29 +420,29 @@ class Num2WordsMGMTest(TestCase):
         )
 
     def test_year(self):
-        self.assertEqual(self.n2w.to_year(1001), 'rihunid id resi id')
+        self.assertEqual(self.n2w.to_year(1001), 'rihun iid resi iid')
         self.assertEqual(
-            self.n2w.to_year(1789), 'rihunid id atusid hohoru gulhohoteil resi hohopat'
+            self.n2w.to_year(1789), 'rihun iid atus liim nai-rua saguul haet liim nai-telu resi liim nai-fata'
         )
         self.assertEqual(
-            self.n2w.to_year(1942), 'rihunid id atusid hohopat gulpat resi ru'
+            self.n2w.to_year(1942), 'rihun iid atus liim nai-fata saguul haet faat resi ruu'
         )
         self.assertEqual(
-            self.n2w.to_year(1984), 'rihunid id atusid hohopat gulhohoteil resi pat'
+            self.n2w.to_year(1984), 'rihun iid atus liim nai-fata saguul haet liim nai-telu resi faat'
         )
-        self.assertEqual(self.n2w.to_year(2000), 'rihunid ru')
-        self.assertEqual(self.n2w.to_year(2001), 'rihunid ru resi id')
-        self.assertEqual(self.n2w.to_year(2016), 'rihunid ru sagul resi hohonid')
+        self.assertEqual(self.n2w.to_year(2000), 'rihun ruu')
+        self.assertEqual(self.n2w.to_year(2001), 'rihun ruu resi iid')
+        self.assertEqual(self.n2w.to_year(2016), 'rihun ruu saguul resi liim nai-ida')
 
     def test_year_negative(self):
-        self.assertEqual(self.n2w.to_year(-30), 'gulteil muna Kristu')
+        self.assertEqual(self.n2w.to_year(-30), 'saguul haet teul muna Kristu')
         self.assertEqual(
             self.n2w.to_year(-744),
-            'atusid hohoru gulpat resi pat muna Kristu'
+            'atus liim nai-rua saguul haet faat resi faat muna Kristu'
         )
         self.assertEqual(
             self.n2w.to_year(-10000),
-            'rihunid sagul muna Kristu'
+            'rihun saguul muna Kristu'
         )
 
     def test_to_ordinal_num(self):
