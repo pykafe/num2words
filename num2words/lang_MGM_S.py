@@ -114,7 +114,6 @@ class Num2Word_MGM_S(Num2Word_EU):
 
     def to_currency(self, val, currency='USD', cents=True,
                     adjective=False):
-        cr1, _ = self.CURRENCY_FORMS[currency]
         """
         Args:
             val: Numeric value
