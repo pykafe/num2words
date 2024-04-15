@@ -361,62 +361,62 @@ class Num2WordsMGMTest(TestCase):
             self.n2w.to_currency(1.00, currency='CHF')
 
     def test_currency_integer_negative(self):
-        self.assertEqual(self.n2w.to_currency(-1.00), 'menus id dólar')
+        self.assertEqual(self.n2w.to_currency(-1.00), 'menus dolar iid')
         self.assertEqual(
             self.n2w.to_currency(-256.00),
-            'menus atusid ru gullim resi hohonid dólares'
+            'menus dolar atus ruu saguul haet liim resi liim nai-ida'
         )
-        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus rihunid id dólares')
+        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus dolar rihun iid')
         self.assertEqual(
-            self.n2w.to_currency(-1000000.00), 'menus miliaunid id dólares'
+            self.n2w.to_currency(-1000000.00), 'menus dolar miliaun iid'
         )
         self.assertEqual(
             self.n2w.to_currency(-1234567.00),
-            'menus miliaunid id rihunid atusid ru gulteil resi pat atusid lim gulhohonid resi hohoru dólares'
+            'menus dolar miliaun iid rihun atus ruu saguul haet teul resi faat atus liim saguul haet liim nai-ida resi liim nai-rua'
         )
 
     def test_currency_float(self):
-        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'id dólar')
+        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'dolar iid')
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.01')), 'id dólar resi id cêntimu'
+            self.n2w.to_currency(Decimal('1.01')), 'dolar iid sentavu iid'
         )
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.03')), 'id dólar resi teil cêntimus'
+            self.n2w.to_currency(Decimal('1.03')), 'dolar iid sentavu teul'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('1.35')),
-            'id dólar resi gulteil resi lim cêntimus'
+            'dolar iid sentavu saguul haet teul resi liim'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('3.14')),
-            'teil dólares resi sagul resi pat cêntimus'
+            'dolar teul sentavu saguul resi faat'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('101.22')),
-            'atusid id resi id dólares resi gulru resi ru cêntimus'
+            'dolar atus iid resi iid sentavu saguul haet rua resi ruu'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('2345.75')),
-            'rihunid ru atusid teil gulpat resi lim dólares resi gulhohoru resi lim cêntimus'
+            'dolar rihun ruu atus teul saguul haet faat resi liim sentavu saguul haet liim nai-rua resi liim'
 
         )
 
     def test_currency_float_negative(self):
         self.assertEqual(
             self.n2w.to_currency(Decimal('-2.34')),
-            'menus ru dólares resi gulteil resi pat cêntimus'
+            'menus dolar ruu sentavu saguul haet teul resi faat'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-9.99')),
-            'menus hohopat dólares resi gulhohopat resi hohopat cêntimus'
+            'menus dolar liim nai-fata sentavu saguul haet liim nai-fata resi liim nai-fata'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-7.01')),
-            'menus hohoru dólares resi id cêntimu'
+            'menus dolar liim nai-rua sentavu iid'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-222.22')),
-            'menus atusid ru gulru resi ru dólares resi gulru resi ru cêntimus'
+            'menus dolar atus ruu saguul haet rua resi ruu sentavu saguul haet rua resi ruu'
         )
 
     def test_year(self):
