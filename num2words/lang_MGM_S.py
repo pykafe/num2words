@@ -26,7 +26,7 @@ DOLLAR = ('dolar', 'dolar')
 CENTS = ('sentavu', 'sentavu')
 
 
-class Num2Word_MGM(Num2Word_EU):
+class Num2Word_MGM_S(Num2Word_EU):
 
     CURRENCY_FORMS = {
         'AUD': (DOLLAR, CENTS),
@@ -48,26 +48,26 @@ class Num2Word_MGM(Num2Word_EU):
         self.exclude_title = ["resi", "vírgula", "menus"]
 
         self.mid_numwords = [
-            (1000, "rihun"), (100, "atus"), (90, "guul hoho paat"),
-            (80, "guul hoho teil"), (70, "guul hoho ruu"), (60, "guul hohon iid"),
-            (50, "guul liim"), (40, "guul paat"), (30, "guul teil"),
-            (20, "guul ruu")
+            (1000, "rihun"), (100, "atus"), (90, "saguul haet liim nai-fata"),
+            (80, "saguul haet liim nai-telu"), (70, "saguul haet liim nai-rua"), (60, "saguul haet liim nai-ida"),
+            (50, "saguul haet liim"), (40, "saguul haet faat"), (30, "saguul haet teul"),
+            (20, "saguul haet rua")
         ]
         self.low_numwords = [
             "saguul",
-            "hoho paat", "hoho teil", "hoho ruu", "hohon iid", "liim", "paat", "teil", "ruu",
+            "liim nai-fata", "liim nai-telu", "liim nai-rua", "liim nai-ida", "liim", "faat", "teul", "ruu",
             "iid", "mamu"
         ]
         self.hundreds = {
             1: "atus iid",
             2: "atus ruu",
-            3: "atus teil",
-            4: "atus paat",
+            3: "atus teul",
+            4: "atus faat",
             5: "atus liim",
-            6: "atus hohon iid",
-            7: "atus hohon ruu",
-            8: "atus hoho teil",
-            9: "atus hoho paat",
+            6: "atus liim nai-ida",
+            7: "atus liim nai-rua",
+            8: "atus liim nai-telu",
+            9: "atus liim nai-fata",
         }
 
     def merge(self, curr, next):
@@ -99,9 +99,9 @@ class Num2Word_MGM(Num2Word_EU):
 
     def to_ordinal(self, value):
         self.verify_ordinal(value)
-        result = super().to_cardinal(value)
-        result = 'da'+result
+        result = f"da{self.to_cardinal(value)}"
         return result
+
 
     def to_ordinal_num(self, value):
         self.verify_ordinal(value)
@@ -127,6 +127,7 @@ class Num2Word_MGM(Num2Word_EU):
 
         try:
             cr1, cr2 = self.CURRENCY_FORMS[currency]
+
         except KeyError:
             raise NotImplementedError(
                 'Currency code "%s" not implemented for "%s"' %
