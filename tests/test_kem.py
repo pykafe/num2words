@@ -141,42 +141,42 @@ class Num2WordsKEMTest(TestCase):
     def test_cardinal_float(self):
         self.assertEqual(num2words(Decimal('1.00'), lang='kem'), 'sia')
         self.assertEqual(num2words(
-            Decimal('1.01'), lang='kem'), 'sia vírgula bai sia')
+            Decimal('1.01'), lang='kem'), 'sia virgula bai sia')
         self.assertEqual(num2words(
-            Decimal('1.035'), lang='kem'), 'sia vírgula bai telu lima'
+            Decimal('1.035'), lang='kem'), 'sia virgula bai telu lima'
         )
         self.assertEqual(num2words(
-            Decimal('1.35'), lang='kem'), 'sia vírgula telu lima'
+            Decimal('1.35'), lang='kem'), 'sia virgula telu lima'
         )
         self.assertEqual(
             num2words(Decimal('3.14159'), lang='kem'),
-            'telu vírgula sia paat sia lima sibe'
+            'telu virgula sia paat sia lima sibe'
         )
         self.assertEqual(
             num2words(Decimal('101.22'), lang='kem'),
-            'atsus sia resin sia vírgula rua rua'
+            'atsus sia resin sia virgula rua rua'
         )
         self.assertEqual(
             num2words(Decimal('2345.75'), lang='kem'),
-            'ribun rua atsus telu gulupaat resin lima vírgula itsu lima'
+            'ribun rua atsus telu gulupaat resin lima virgula itsu lima'
         )
 
     def test_cardinal_float_negative(self):
         self.assertEqual(
             num2words(Decimal('-2.34'), lang='kem'),
-            'menus rua vírgula telu paat'
+            'menus rua virgula telu paat'
         )
         self.assertEqual(
             num2words(Decimal('-9.99'), lang='kem'),
-            'menus sibe vírgula sibe sibe'
+            'menus sibe virgula sibe sibe'
         )
         self.assertEqual(
             num2words(Decimal('-7.01'), lang='kem'),
-            'menus itsu vírgula bai sia'
+            'menus itsu virgula bai sia'
         )
         self.assertEqual(
             num2words(Decimal('-222.22'), lang='kem'),
-            'menus atsus rua gulurua resin rua vírgula rua rua'
+            'menus atsus rua gulurua resin rua virgula rua rua'
         )
 
     def test_ordinal(self):
@@ -289,133 +289,133 @@ class Num2WordsKEMTest(TestCase):
         )
 
     def test_currency_integer(self):
-        self.assertEqual(self.n2w.to_currency(1.00), 'sia dólar')
-        self.assertEqual(self.n2w.to_currency(2.00), 'rua dólares')
-        self.assertEqual(self.n2w.to_currency(3.00), 'telu dólares')
-        self.assertEqual(self.n2w.to_currency(4.00), 'paat dólares')
-        self.assertEqual(self.n2w.to_currency(5.00), 'lima dólares')
-        self.assertEqual(self.n2w.to_currency(6.00), 'neem dólares')
-        self.assertEqual(self.n2w.to_currency(7.00), 'itsu dólares')
-        self.assertEqual(self.n2w.to_currency(8.00), 'balu dólares')
-        self.assertEqual(self.n2w.to_currency(9.00), 'sibe dólares')
-        self.assertEqual(self.n2w.to_currency(10.00), 'sapulu dólares')
-        self.assertEqual(self.n2w.to_currency(11.00), 'sapulu resin sia dólares')
-        self.assertEqual(self.n2w.to_currency(12.00), 'sapulu resin rua dólares')
-        self.assertEqual(self.n2w.to_currency(13.00), 'sapulu resin telu dólares')
-        self.assertEqual(self.n2w.to_currency(14.00), 'sapulu resin paat dólares')
-        self.assertEqual(self.n2w.to_currency(15.00), 'sapulu resin lima dólares')
-        self.assertEqual(self.n2w.to_currency(16.00), 'sapulu resin neem dólares')
-        self.assertEqual(self.n2w.to_currency(17.00), 'sapulu resin itsu dólares')
-        self.assertEqual(self.n2w.to_currency(18.00), 'sapulu resin balu dólares')
-        self.assertEqual(self.n2w.to_currency(19.00), 'sapulu resin sibe dólares')
-        self.assertEqual(self.n2w.to_currency(20.00), 'gulurua dólares')
+        self.assertEqual(self.n2w.to_currency(1.00), 'sia dolar')
+        self.assertEqual(self.n2w.to_currency(2.00), 'rua dolares')
+        self.assertEqual(self.n2w.to_currency(3.00), 'telu dolares')
+        self.assertEqual(self.n2w.to_currency(4.00), 'paat dolares')
+        self.assertEqual(self.n2w.to_currency(5.00), 'lima dolares')
+        self.assertEqual(self.n2w.to_currency(6.00), 'neem dolares')
+        self.assertEqual(self.n2w.to_currency(7.00), 'itsu dolares')
+        self.assertEqual(self.n2w.to_currency(8.00), 'balu dolares')
+        self.assertEqual(self.n2w.to_currency(9.00), 'sibe dolares')
+        self.assertEqual(self.n2w.to_currency(10.00), 'sapulu dolares')
+        self.assertEqual(self.n2w.to_currency(11.00), 'sapulu resin sia dolares')
+        self.assertEqual(self.n2w.to_currency(12.00), 'sapulu resin rua dolares')
+        self.assertEqual(self.n2w.to_currency(13.00), 'sapulu resin telu dolares')
+        self.assertEqual(self.n2w.to_currency(14.00), 'sapulu resin paat dolares')
+        self.assertEqual(self.n2w.to_currency(15.00), 'sapulu resin lima dolares')
+        self.assertEqual(self.n2w.to_currency(16.00), 'sapulu resin neem dolares')
+        self.assertEqual(self.n2w.to_currency(17.00), 'sapulu resin itsu dolares')
+        self.assertEqual(self.n2w.to_currency(18.00), 'sapulu resin balu dolares')
+        self.assertEqual(self.n2w.to_currency(19.00), 'sapulu resin sibe dolares')
+        self.assertEqual(self.n2w.to_currency(20.00), 'gulurua dolares')
 
-        self.assertEqual(self.n2w.to_currency(21.00), 'gulurua resin sia dólares')
-        self.assertEqual(self.n2w.to_currency(22.00), 'gulurua resin rua dólares')
-        self.assertEqual(self.n2w.to_currency(35.00), 'gulutelu resin lima dólares')
-        self.assertEqual(self.n2w.to_currency(99.00), 'gulusibe resin sibe dólares')
+        self.assertEqual(self.n2w.to_currency(21.00), 'gulurua resin sia dolares')
+        self.assertEqual(self.n2w.to_currency(22.00), 'gulurua resin rua dolares')
+        self.assertEqual(self.n2w.to_currency(35.00), 'gulutelu resin lima dolares')
+        self.assertEqual(self.n2w.to_currency(99.00), 'gulusibe resin sibe dolares')
 
-        self.assertEqual(self.n2w.to_currency(100.00), 'atsus sia dólares')
-        self.assertEqual(self.n2w.to_currency(101.00), 'atsus sia resin sia dólares')
+        self.assertEqual(self.n2w.to_currency(100.00), 'atsus sia dolares')
+        self.assertEqual(self.n2w.to_currency(101.00), 'atsus sia resin sia dolares')
         self.assertEqual(
-            self.n2w.to_currency(128.00), 'atsus sia gulurua resin balu dólares'
+            self.n2w.to_currency(128.00), 'atsus sia gulurua resin balu dolares'
         )
         self.assertEqual(
-            self.n2w.to_currency(713.00), 'atsus itsu sapulu resin telu dólares')
+            self.n2w.to_currency(713.00), 'atsus itsu sapulu resin telu dolares')
 
-        self.assertEqual(self.n2w.to_currency(1000.00), 'ribun sia dólares')
-        self.assertEqual(self.n2w.to_currency(1001.00), 'ribun sia resin sia dólares')
+        self.assertEqual(self.n2w.to_currency(1000.00), 'ribun sia dolares')
+        self.assertEqual(self.n2w.to_currency(1001.00), 'ribun sia resin sia dolares')
         self.assertEqual(
-            self.n2w.to_currency(1111.00), 'ribun sia atsus sia sapulu resin sia dólares')
+            self.n2w.to_currency(1111.00), 'ribun sia atsus sia sapulu resin sia dolares')
         self.assertEqual(
-            self.n2w.to_currency(2114.00), 'ribun rua atsus sia sapulu resin paat dólares'
+            self.n2w.to_currency(2114.00), 'ribun rua atsus sia sapulu resin paat dolares'
         )
         self.assertEqual(
             self.n2w.to_currency(73421.00),
-            'ribun guluitsu resin telu atsus paat gulurua resin sia dólares'
+            'ribun guluitsu resin telu atsus paat gulurua resin sia dolares'
         )
 
-        self.assertEqual(self.n2w.to_currency(100000.00), 'ribun atsus sia dólares')
+        self.assertEqual(self.n2w.to_currency(100000.00), 'ribun atsus sia dolares')
         self.assertEqual(
             self.n2w.to_currency(250050.00),
-            'ribun atsus rua gululima gululima dólares'
+            'ribun atsus rua gululima gululima dolares'
         )
         self.assertEqual(
             self.n2w.to_currency(6000000.00),
-            'miliaun neem dólares'
+            'miliaun neem dolares'
         )
         self.assertEqual(
             self.n2w.to_currency(19000000000.00),
-            'miliaun ribun sapulu resin sibe dólares'
+            'miliaun ribun sapulu resin sibe dolares'
         )
         self.assertEqual(
             self.n2w.to_currency(145000000002.00),
-            'miliaun ribun atsus sia gulupaat resin lima resin rua dólares'
+            'miliaun ribun atsus sia gulupaat resin lima resin rua dolares'
         )
         self.assertEqual(self.n2w.to_currency(1.00, currency='USD'),
-                         'sia dólar')
+                         'sia dolar')
         self.assertEqual(self.n2w.to_currency(1.50, currency='USD'),
-                         'sia dólar resin gululima cêntimus')
+                         'sia dolar resin gululima sentavus')
         with self.assertRaises(NotImplementedError):
             self.n2w.to_currency(1.00, currency='CHF')
 
     def test_currency_integer_negative(self):
-        self.assertEqual(self.n2w.to_currency(-1.00), 'menus sia dólar')
+        self.assertEqual(self.n2w.to_currency(-1.00), 'menus sia dolar')
         self.assertEqual(
             self.n2w.to_currency(-256.00),
-            'menus atsus rua gululima resin neem dólares'
+            'menus atsus rua gululima resin neem dolares'
         )
-        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus ribun sia dólares')
+        self.assertEqual(self.n2w.to_currency(-1000.00), 'menus ribun sia dolares')
         self.assertEqual(
-            self.n2w.to_currency(-1000000.00), 'menus miliaun sia dólares'
+            self.n2w.to_currency(-1000000.00), 'menus miliaun sia dolares'
         )
         self.assertEqual(
             self.n2w.to_currency(-1234567.00),
-            'menus miliaun sia ribun atsus rua gulutelu resin paat atsus lima guluneem resin itsu dólares'
+            'menus miliaun sia ribun atsus rua gulutelu resin paat atsus lima guluneem resin itsu dolares'
         )
 
     def test_currency_float(self):
-        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'sia dólar')
+        self.assertEqual(self.n2w.to_currency(Decimal('1.00')), 'sia dolar')
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.01')), 'sia dólar resin sia cêntimu'
+            self.n2w.to_currency(Decimal('1.01')), 'sia dolar resin sia sentavu'
         )
         self.assertEqual(
-            self.n2w.to_currency(Decimal('1.03')), 'sia dólar resin telu cêntimus'
+            self.n2w.to_currency(Decimal('1.03')), 'sia dolar resin telu sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('1.35')),
-            'sia dólar resin gulutelu resin lima cêntimus'
+            'sia dolar resin gulutelu resin lima sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('3.14')),
-            'telu dólares resin sapulu resin paat cêntimus'
+            'telu dolares resin sapulu resin paat sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('101.22')),
-            'atsus sia resin sia dólares resin gulurua resin rua cêntimus'
+            'atsus sia resin sia dolares resin gulurua resin rua sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('2345.75')),
-            'ribun rua atsus telu gulupaat resin lima dólares resin guluitsu resin lima cêntimus'
+            'ribun rua atsus telu gulupaat resin lima dolares resin guluitsu resin lima sentavus'
 
         )
 
     def test_currency_float_negative(self):
         self.assertEqual(
             self.n2w.to_currency(Decimal('-2.34')),
-            'menus rua dólares resin gulutelu resin paat cêntimus'
+            'menus rua dolares resin gulutelu resin paat sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-9.99')),
-            'menus sibe dólares resin gulusibe resin sibe cêntimus'
+            'menus sibe dolares resin gulusibe resin sibe sentavus'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-7.01')),
-            'menus itsu dólares resin sia cêntimu'
+            'menus itsu dolares resin sia sentavu'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-222.22')),
-            'menus atsus rua gulurua resin rua dólares resin gulurua resin rua cêntimus'
+            'menus atsus rua gulurua resin rua dolares resin gulurua resin rua sentavus'
         )
 
     def test_year(self):

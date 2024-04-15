@@ -43,8 +43,8 @@ class Num2Word_KEM(Num2Word_EU):
         lows = ["quatr", "tr", "b", "m"]
         self.high_numwords = self.gen_high_numwords([], [], lows)
         self.negword = "menus "
-        self.pointword = "vírgula"
-        self.exclude_title = ["resin", "vírgula", "menus"]
+        self.pointword = "virgula"
+        self.exclude_title = ["resin", "virgula", "menus"]
 
         self.mid_numwords = [
             (1000, "ribun"), (100, "atsus"), (90, "gulusibe"),
@@ -61,46 +61,46 @@ class Num2Word_KEM(Num2Word_EU):
             {
                 0: "",
                 1: "saba",
-                2: "abarua",
-                3: "abatelu",
-                4: "abapaat",
-                5: "abalima",
-                6: "abaneem",
-                7: "abaitsu",
-                8: "ababalu",
-                9: "abasibe",
+                2: "aba rua",
+                3: "aba telu",
+                4: "aba paat",
+                5: "aba lima",
+                6: "aba neem",
+                7: "aba itsu",
+                8: "aba balu",
+                9: "aba sibe",
             },
             {
                 0: "",
-                1: "décimu",
-                2: "vigésimu",
-                3: "trigésimu",
-                4: "quadragésimu",
-                5: "quinquagésimu",
-                6: "sexagésimu",
-                7: "septuagésimu",
-                8: "octogésimu",
-                9: "nonagésimu",
+                1: "aba sapulu",
+                2: "aba gulurua",
+                3: "aba gulutelu",
+                4: "aba gulupaat",
+                5: "aba gululima",
+                6: "aba guluneem",
+                7: "aba guluitsu",
+                8: "aba gulubalu",
+                9: "aba gulusibe",
             },
             {
                 0: "",
-                1: "centésimu",
-                2: "ducentésimu",
-                3: "tricentésimu",
-                4: "quadrigentésimu",
-                5: "quingentésimu",
-                6: "seiscentésimu",
-                7: "septigentésimu",
-                8: "octigentésimu",
-                9: "nongentésimu",
+                1: "aba atsussia",
+                2: "aba atsusrua",
+                3: "aba atsutelu",
+                4: "aba atsuspaat",
+                5: "aba atsuslima",
+                6: "aba atsusneem",
+                7: "aba atsusitsu",
+                8: "aba atsusbalu",
+                9: "aba atsussibe",
             },
         ]
         self.thousand_separators = {
-            3: "milésimu",
-            6: "milionésimu",
-            9: "milésimu milionésimu",
-            12: "bilionésimu",
-            15: "milésimu bilionésimu"
+            3: "aba ribun",
+            6: "aba miliaun",
+            9: "aba ribun aba miliaun",
+            12: "aba biliaun",
+            15: "aba miliaun aba biliaun"
         }
         self.hundreds = {
             1: "atsus",
@@ -163,7 +163,7 @@ class Num2Word_KEM(Num2Word_EU):
         result = result.strip()
         result = re.sub('\\s+', ' ', result)
 
-        if result.startswith('primeiru') and value != '1':
+        if result.startswith('saba') and value != '1':
             result = result[9:]
 
         return result
@@ -189,10 +189,10 @@ class Num2Word_KEM(Num2Word_EU):
         cr1, _ = self.CURRENCY_FORMS[currency]
 
         for ext in (
-                'miliaun','biliaun','triliaun'):
+                'miliaun', 'biliaun', 'triliaun'):
             if re.match('.*{} (?={})'.format(ext, cr1[1]), result):
                 result = result.replace(
                     f'{ext}', f'{ext}', 1
                 )
-        result = result.replace(' resin bai cêntimus', '')
+        result = result.replace(' resin bai sentavu', '')
         return result
