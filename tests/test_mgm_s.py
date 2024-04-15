@@ -30,100 +30,100 @@ class Num2WordsMGMTest(TestCase):
         self.n2w = Num2Word_MGM_S()
 
     def test_cardinal_integer(self):
-        self.assertEqual(num2words(1, lang='mgm'), 'id')
-        self.assertEqual(num2words(2, lang='mgm'), 'ru')
-        self.assertEqual(num2words(3, lang='mgm'), 'teil')
-        self.assertEqual(num2words(4, lang='mgm'), 'pat')
-        self.assertEqual(num2words(5, lang='mgm'), 'lim')
-        self.assertEqual(num2words(6, lang='mgm'), 'hohonid')
-        self.assertEqual(num2words(7, lang='mgm'), 'hohoru')
-        self.assertEqual(num2words(8, lang='mgm'), 'hohoteil')
-        self.assertEqual(num2words(9, lang='mgm'), 'hohopat')
-        self.assertEqual(num2words(10, lang='mgm'), 'sagul')
-        self.assertEqual(num2words(11, lang='mgm'), 'sagul resi id')
-        self.assertEqual(num2words(12, lang='mgm'), 'sagul resi ru')
-        self.assertEqual(num2words(13, lang='mgm'), 'sagul resi teil')
-        self.assertEqual(num2words(14, lang='mgm'), 'sagul resi pat')
-        self.assertEqual(num2words(15, lang='mgm'), 'sagul resi lim')
-        self.assertEqual(num2words(16, lang='mgm'), 'sagul resi hohonid')
-        self.assertEqual(num2words(17, lang='mgm'), 'sagul resi hohoru')
-        self.assertEqual(num2words(18, lang='mgm'), 'sagul resi hohoteil')
-        self.assertEqual(num2words(19, lang='mgm'), 'sagul resi hohopat')
-        self.assertEqual(num2words(20, lang='mgm'), 'gulru')
+        self.assertEqual(num2words(1, lang='mgm-S'), 'iid')
+        self.assertEqual(num2words(2, lang='mgm-S'), 'ruu')
+        self.assertEqual(num2words(3, lang='mgm-S'), 'teul')
+        self.assertEqual(num2words(4, lang='mgm-S'), 'faat')
+        self.assertEqual(num2words(5, lang='mgm-S'), 'liim')
+        self.assertEqual(num2words(6, lang='mgm-S'), 'liim nai-ida')
+        self.assertEqual(num2words(7, lang='mgm-S'), 'liim nai-rua')
+        self.assertEqual(num2words(8, lang='mgm-S'), 'liim nai-telu')
+        self.assertEqual(num2words(9, lang='mgm-S'), 'liim nai-fata')
+        self.assertEqual(num2words(10, lang='mgm-S'), 'saguul')
+        self.assertEqual(num2words(11, lang='mgm-S'), 'saguul resi iid')
+        self.assertEqual(num2words(12, lang='mgm-S'), 'saguul resi ruu')
+        self.assertEqual(num2words(13, lang='mgm-S'), 'saguul resi teul')
+        self.assertEqual(num2words(14, lang='mgm-S'), 'saguul resi faat')
+        self.assertEqual(num2words(15, lang='mgm-S'), 'saguul resi liim')
+        self.assertEqual(num2words(16, lang='mgm-S'), 'saguul resi liim nai-ida')
+        self.assertEqual(num2words(17, lang='mgm-S'), 'saguul resi liim nai-rua')
+        self.assertEqual(num2words(18, lang='mgm-S'), 'saguul resi liim nai-telu')
+        self.assertEqual(num2words(19, lang='mgm-S'), 'saguul resi liim nai-fata')
+        self.assertEqual(num2words(20, lang='mgm-S'), 'saguul haet rua')
 
-        self.assertEqual(num2words(21, lang='mgm'), 'gulru resi id')
-        self.assertEqual(num2words(22, lang='mgm'), 'gulru resi ru')
-        self.assertEqual(num2words(35, lang='mgm'), 'gulteil resi lim')
-        self.assertEqual(num2words(99, lang='mgm'), 'gulhohopat resi hohopat')
+        self.assertEqual(num2words(21, lang='mgm-S'), 'saguul haet rua resi iid')
+        self.assertEqual(num2words(22, lang='mgm-S'), 'saguul haet rua resi ruu')
+        self.assertEqual(num2words(35, lang='mgm-S'), 'saguul haet teul resi liim')
+        self.assertEqual(num2words(99, lang='mgm-S'), 'saguul haet liim nai-fata resi liim nai-fata')
 
-        self.assertEqual(num2words(100, lang='mgm'), 'atusid id')
-        self.assertEqual(num2words(101, lang='mgm'), 'atusid id resi id')
-        self.assertEqual(num2words(107, lang='mgm'), 'atusid id resi hohoru')
-        self.assertEqual(num2words(110, lang='mgm'), 'atusid id sagul')
-        self.assertEqual(num2words(114, lang='mgm'), 'atusid id sagul resi pat')
-        self.assertEqual(num2words(128, lang='mgm'), 'atusid id gulru resi hohoteil')
-        self.assertEqual(num2words(151, lang='mgm'), 'atusid id gullim resi id')
-        self.assertEqual(num2words(713, lang='mgm'), 'atusid hohoru sagul resi teil')
-        self.assertEqual(num2words(999, lang='mgm'), 'atusid hohopat gulhohopat resi hohopat')
+        self.assertEqual(num2words(100, lang='mgm-S'), 'atus iid')
+        self.assertEqual(num2words(101, lang='mgm-S'), 'atus iid resi iid')
+        self.assertEqual(num2words(107, lang='mgm-S'), 'atus iid resi liim nai-rua')
+        self.assertEqual(num2words(110, lang='mgm-S'), 'atus iid saguul')
+        self.assertEqual(num2words(114, lang='mgm-S'), 'atus iid saguul resi faat')
+        self.assertEqual(num2words(128, lang='mgm-S'), 'atus iid saguul haet rua resi liim nai-telu')
+        self.assertEqual(num2words(151, lang='mgm-S'), 'atus iid saguul haet liim resi iid')
+        self.assertEqual(num2words(713, lang='mgm-S'), 'atus liim nai-rua saguul resi teul')
+        self.assertEqual(num2words(999, lang='mgm-S'), 'atus liim nai-fata saguul haet liim nai-fata resi liim nai-fata')
 
-        self.assertEqual(num2words(1000, lang='mgm'), 'rihunid id')
-        self.assertEqual(num2words(1001, lang='mgm'), 'rihunid id resi id')
-        self.assertEqual(num2words(1011, lang='mgm'), 'rihunid id sagul resi id')
-        self.assertEqual(num2words(1111, lang='mgm'), 'rihunid id atusid id sagul resi id')
-        self.assertEqual(num2words(2357, lang='mgm'), 'rihunid ru atusid teil gullim resi hohoru')
+        self.assertEqual(num2words(1000, lang='mgm-S'), 'rihun iid')
+        self.assertEqual(num2words(1001, lang='mgm-S'), 'rihun iid resi iid')
+        self.assertEqual(num2words(1011, lang='mgm-S'), 'rihun iid saguul resi iid')
+        self.assertEqual(num2words(1111, lang='mgm-S'), 'rihun iid atus iid saguul resi iid')
+        self.assertEqual(num2words(2357, lang='mgm-S'), 'rihun ruu atus teul saguul haet liim resi liim nai-rua')
         self.assertEqual(
-            num2words(2200, lang='mgm'),
-            'rihunid ru atusid ru'
+            num2words(2200, lang='mgm-S'),
+            'rihun ruu atus ruu'
         )
-        self.assertEqual(num2words(2230, lang='mgm'), 'rihunid ru atusid ru gulteil')
-        self.assertEqual(num2words(73400, lang='mgm'), 'rihunid gulhohoru resi teil atusid pat')
-        self.assertEqual(num2words(73421, lang='mgm'), 'rihunid gulhohoru resi teil atusid pat gulru resi id')
-        self.assertEqual(num2words(100000, lang='mgm'), 'rihunid atusid id')
-        self.assertEqual(num2words(250050, lang='mgm'), 'rihunid atusid ru gullim gullim')
+        self.assertEqual(num2words(2230, lang='mgm-S'), 'rihun ruu atus ruu saguul haet teul')
+        self.assertEqual(num2words(73400, lang='mgm-S'), 'rihun saguul haet liim nai-rua resi teul atus faat')
+        self.assertEqual(num2words(73421, lang='mgm-S'), 'rihun saguul haet liim nai-rua resi teul atus faat saguul haet rua resi iid')
+        self.assertEqual(num2words(100000, lang='mgm-S'), 'rihun atus iid')
+        self.assertEqual(num2words(250050, lang='mgm-S'), 'rihun atus ruu saguul haet liim saguul haet liim')
         self.assertEqual(
-            num2words(6000000, lang='mgm'), 'miliaunid hohonid'
-        )
-        self.assertEqual(
-            num2words(100000000, lang='mgm'), 'miliaunid atusid id'
+            num2words(6000000, lang='mgm-S'), 'miliaun liim nai-ida'
         )
         self.assertEqual(
-            num2words(19000000000, lang='mgm'), 'miliaunid rihunid sagul resi hohopat'
+            num2words(100000000, lang='mgm-S'), 'miliaun atus iid'
         )
         self.assertEqual(
-            num2words(145000000002, lang='mgm'),
-            'miliaunid rihunid atusid id gulpat resi lim resi ru'
+            num2words(19000000000, lang='mgm-S'), 'miliaun rihun saguul resi liim nai-fata'
         )
         self.assertEqual(
-            num2words(4635102, lang='mgm'),
-            'miliaunid pat rihunid atusid hohonid gulteil resi lim atusid id resi ru'
+            num2words(145000000002, lang='mgm-S'),
+            'miliaun rihun atus iid saguul haet faat resi liim resi ruu'
         )
         self.assertEqual(
-            num2words(145254635102, lang='mgm'),
-            'miliaunid rihunid atusid id gulpat resi lim atusid ru gullim resi pat rihunid atusid hohonid gulteil resi lim atusid id resi ru'
+            num2words(4635102, lang='mgm-S'),
+            'miliaun faat rihun atus liim nai-ida saguul haet teul resi liim atus iid resi ruu'
         )
         self.assertEqual(
-            num2words(1000000000000, lang='mgm'),
-            'biliaunid id'
+            num2words(145254635102, lang='mgm-S'),
+            'miliaun rihun atus iid saguul haet faat resi liim atus ruu saguul haet liim resi faat rihun atus liim nai-ida saguul haet teul resi liim atus iid resi ruu'
         )
         self.assertEqual(
-            num2words(2000000000000, lang='mgm'),
-            'biliaunid ru'
+            num2words(1000000000000, lang='mgm-S'),
+            'biliaun iid'
         )
         self.assertEqual(
-            num2words(1000000000000000, lang='mgm'),
-            'biliaunid rihunid id'
+            num2words(2000000000000, lang='mgm-S'),
+            'biliaun ruu'
         )
         self.assertEqual(
-            num2words(2000000000000000, lang='mgm'),
-            'biliaunid rihunid ru'
+            num2words(1000000000000000, lang='mgm-S'),
+            'biliaun rihun iid'
         )
         self.assertEqual(
-            num2words(1000000000000000000, lang='mgm'),
-            'triliaunid id'
+            num2words(2000000000000000, lang='mgm-S'),
+            'biliaun rihun ruu'
         )
         self.assertEqual(
-            num2words(2000000000000000000, lang='mgm'),
-            'triliaunid ru'
+            num2words(1000000000000000000, lang='mgm-S'),
+            'triliaun iid'
+        )
+        self.assertEqual(
+            num2words(2000000000000000000, lang='mgm-S'),
+            'triliaun ruu'
         )
 
     def test_cardinal_integer_negative(self):
