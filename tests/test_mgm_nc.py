@@ -404,19 +404,19 @@ class Num2WordsMGMTest(TestCase):
     def test_currency_float_negative(self):
         self.assertEqual(
             self.n2w.to_currency(Decimal('-2.34')),
-            'menus ru dólares resi gulteil resi pat cêntimus'
+            'menus dolar ruu sentavu teul nuul resi faat'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-9.99')),
-            'menus hohopat dólares resi gulhohopat resi hohopat cêntimus'
+            'menus dolar sia sentavu sia nuul resi sia'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-7.01')),
-            'menus hohoru dólares resi id cêntimu'
+            'menus dolar hitu sentavu iid'
         )
         self.assertEqual(
             self.n2w.to_currency(Decimal('-222.22')),
-            'menus atusid ru gulru resi ru dólares resi gulru resi ru cêntimus'
+            'menus dolar atus ruu rua nuul resi ruu sentavu rua nuul resi ruu'
         )
 
     def test_year(self):
