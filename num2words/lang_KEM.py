@@ -117,20 +117,36 @@ class Num2Word_KEM(Num2Word_EU):
 
     def to_currency(self, val, currency='USD', cents=True, 
                     adjective=False):
-        backup_negword = self.negword
-        self.negword = self.negword[:-1]
-        result = super().to_currency(
-            val, currency=currency, cents=cents, separator=separator,
-            adjective=adjective)
-        self.negword = backup_negword
+        left, right, is_negative = parse_currency_parts(val)
 
-        cr1, _ = self.CURRENCY_FORMS[currency]
+        try:
+            cr1, cr2 = self.CURRENCY_FORMS[currency]
 
-        for ext in (
-                'miliaun', 'biliaun', 'triliaun'):
-            if re.match('.*{} (?={})'.format(ext, cr1[1]), result):
-                result = result.replace(
-                    f'{ext}', f'{ext}', 1
-                )
-        result = result.replace(' resin bai sentavu', '')
-        return result
+        except KeyError:
+            raise NotImplementedError(
+                'Currency code "%s" not implemented for "%s"' %
+                (currency, self.__class__.__name__))
+
+        if adjective and currency in self.CURRENCY_ADJECTIVES:
+            cr1 = prefix_currency(self.CURRENCY_ADJECTIVES[currency], cr1)
+
+        minus_str = "%s " % self.negword.strip() if is_negative else ""
+        money_str = self._money_verbose(left, currency)
+        cents_str = self._cents_verbose(right, currency) \
+            if cents else self._cents_terse(right, currency)
+
+        if right == 0:
+            return u'%s%s %s' % (
+                minus_str,
+                self.pluralize(left, cr1),
+                money_str
+            )
+        else:
+
+            return u'%s%s %s %s %s' % (
+                minus_str,
+                self.pluralize(left, cr1),
+                money_str,
+                self.pluralize(right, cr2),
+                cents_str
+            )
