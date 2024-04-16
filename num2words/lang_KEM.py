@@ -100,27 +100,10 @@ class Num2Word_KEM(Num2Word_EU):
 
         self.verify_ordinal(value)
 
-        result = []
-        value = str(value)
-        thousand_separator = ''
-
-        for idx, char in enumerate(value[::-1]):
-            if idx and idx % 3 == 0:
-                thousand_separator = self.thousand_separators[idx]
-
-            if char != '0' and thousand_separator:
-                result.append(thousand_separator)
-                thousand_separator = ''
-
-            result.append(self.ords[idx % 3][int(char)])
-
-        result = ' '.join(result[::-1])
-        result = result.strip()
-        result = re.sub('\\s+', ' ', result)
-
-        if result.startswith('saba') and value != '1':
-            result = result[9:]
-
+        if int(value) == 1:
+               result = "saba"
+        else:
+               result = f"aba {self.to_cardinal(value)}"
         return result
 
     def to_ordinal_num(self, value):
