@@ -57,51 +57,6 @@ class Num2Word_KEM(Num2Word_EU):
             "sibe", "balu", "itsu", "neem", "lima", "paat", "telu", "rua",
             "sia", "bai"
         ]
-        self.ords = [
-            {
-                0: "",
-                1: "saba",
-                2: "aba rua",
-                3: "aba telu",
-                4: "aba paat",
-                5: "aba lima",
-                6: "aba neem",
-                7: "aba itsu",
-                8: "aba balu",
-                9: "aba sibe",
-            },
-            {
-                0: "",
-                1: "aba sapulu",
-                2: "aba gulurua",
-                3: "aba gulutelu",
-                4: "aba gulupaat",
-                5: "aba gululima",
-                6: "aba guluneem",
-                7: "aba guluitsu",
-                8: "aba gulubalu",
-                9: "aba gulusibe",
-            },
-            {
-                0: "",
-                1: "aba atsussia",
-                2: "aba atsusrua",
-                3: "aba atsutelu",
-                4: "aba atsuspaat",
-                5: "aba atsuslima",
-                6: "aba atsusneem",
-                7: "aba atsusitsu",
-                8: "aba atsusbalu",
-                9: "aba atsussibe",
-            },
-        ]
-        self.thousand_separators = {
-            3: "aba ribun",
-            6: "aba miliaun",
-            9: "aba ribun aba miliaun",
-            12: "aba biliaun",
-            15: "aba miliaun aba biliaun"
-        }
         self.hundreds = {
             1: "atsus",
             2: "atsus rua",
