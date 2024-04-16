@@ -16,7 +16,7 @@
 # MA 02110-1301 USA
 
 from __future__ import division, unicode_literals
-
+from num2words.currency import parse_currency_parts, prefix_currency
 import re
 
 from .lang_EU import Num2Word_EU
@@ -115,7 +115,7 @@ class Num2Word_KEM(Num2Word_EU):
             return self.to_cardinal(abs(val)) + ' baipila eh Kristu'
         return self.to_cardinal(val)
 
-    def to_currency(self, val, currency='USD', cents=True, 
+    def to_currency(self, val, currency='USD', cents=True,
                     adjective=False):
         left, right, is_negative = parse_currency_parts(val)
 
