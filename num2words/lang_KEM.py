@@ -115,7 +115,7 @@ class Num2Word_KEM(Num2Word_EU):
             return self.to_cardinal(abs(val)) + ' baipila eh Kristu'
         return self.to_cardinal(val)
 
-    def to_currency(self, val, currency='USD', cents=True, separator=' resin',
+    def to_currency(self, val, currency='USD', cents=True, 
                     adjective=False):
         backup_negword = self.negword
         self.negword = self.negword[:-1]
