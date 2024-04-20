@@ -104,6 +104,7 @@ Besides the numerical argument, there are two main optional arguments, ``to:`` a
 * ``it`` (Italian)
 * ``ja`` (Japanese)
 * ``kn`` (Kannada)
+* ``kem`` (Kemak)
 * ``ko`` (Korean)
 * ``kz`` (Kazakh)
 * ``lt`` (Lithuanian)
