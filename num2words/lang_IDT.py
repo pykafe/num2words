@@ -132,11 +132,6 @@ class Num2Word_IDT(Num2Word_EU):
     def to_cardinal(self, value):
         result = super().to_cardinal(value)
 
-        # Transforms "mil e cento e catorze" into "mil cento e catorze"
-        # Transforms "cem milhões e duzentos mil e duzentos e dez" em "cem
-        # milhões duzentos mil duzentos e dez" but "cem milhões e duzentos
-        # mil e duzentos" in "cem milhões duzentos mil e duzentos" and not in
-        # "cem milhões duzentos mil duzentos"
         for ext in (
                 'rihun', 'miliaun','miliaun rihun',
                 'biliaun', 'biliaun rihun'):
@@ -147,92 +142,8 @@ class Num2Word_IDT(Num2Word_EU):
 
         return result
 
-    # for the ordinal conversion the code is similar to pt_BR code,
-    # although there are other rules that are probably more correct in
-    # Portugal. Concerning numbers from 2000th on, saying "dois
-    # milésimos" instead of "segundo milésimo" (the first number
-    # would be used in the cardinal form instead of the ordinal) is better.
-    # This was not implemented.
-    # source:
-    # https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-forma-por-extenso-de-2000-e-de-outros-ordinais/16428
-    '''
-    def to_ordinal(self, value):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
-        self.verify_ordinal(value)
-        try:
-            assert int(value) == value
-        except (ValueError, TypeError, AssertionError):
-            return self.to_cardinal_float(value)
-
-        out = ""
-        if value < 0:
-            value = abs(value)
-            out = "%s " % self.negword.strip()
-
-        if value >= self.MAXVAL:
-            raise OverflowError(self.errmsg_toobig % (value, self.MAXVAL))
-
-        val = self.splitnum(value)
-        outs = val
-        while len(val) != 1:
-            outs = []
-            left, right = val[:2]
-            if isinstance(left, tuple) and isinstance(right, tuple):
-                outs.append(self.merge(left, right))
-                if val[2:]:
-                    outs.append(val[2:])
-            else:
-                for elem in val:
-                    if isinstance(elem, list):
-                        if len(elem) == 1:
-                            outs.append(elem[0])
-                        else:
-                            outs.append(self.clean(elem))
-                    else:
-                        outs.append(elem)
-            val = outs
-
-        words, num = outs[0]
-
-        if num in [900, 800, 700, 600, 500, 400, 300, 200, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 6, 7, 5, 4, 3, 2, 1]:
-            words = 'wai'+words
-
-        words_split = words.split()
-        if len(words_split) >= 3 and num < 100:
-            first_word = 'wai'+words_split[0]
-            second_word = " ".join(words_split[1:])
-            if 'aat' in second_word or 'neen' in second_word:
-                words = first_word+" "+second_word
-            else:
-                words = first_word+" "+second_word
-
-        word_first =  'dah'+words_split[0]
-        if word_first == 'dahatus' and len(words_split) >=3:
-            word_second = " ".join(words_split[1:])
-            if 'haat' in word_second or 'neen' in word_second:
-                words = word_first+" "+word_second
-            else:
-                words = word_first+" "+word_second+'k'
-
-        if len(str(num)) > 3:
-            if 'haat' in words_split[-1:] or 'neen' in words_split[-1:]:
-                words = 'wai'+words
-            else:
-                words = 'wai'+words
-
-        return self.title(out + words)
-
-    def to_ordinal_num(self, value):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
-        self.verify_ordinal(value)
-        return "%sº" % (value)
-    '''
 
     def to_year(self, val, longval=True):
-        # Before changing this function remember this is used by pt-BR
-        # so act accordingly
         if val < 0:
             return self.to_cardinal(abs(val)) + ' antes Kristu'
         return self.to_cardinal(val)
