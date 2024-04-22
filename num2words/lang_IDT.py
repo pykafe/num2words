@@ -96,7 +96,7 @@ class Num2Word_IDT(Num2Word_EU):
 
     def to_ordinal_num(self, value):
         self.verify_ordinal(value)
-        return "%sº" % (value)
+        return f"{value}º"
 
     def to_year(self, val, longval=True):
         if val < 0:
