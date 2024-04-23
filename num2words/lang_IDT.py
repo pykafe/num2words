@@ -58,51 +58,6 @@ class Num2Word_IDT(Num2Word_EU):
             "sia", "ualu", "hitu", "neen", "lima", "aat", "telu", "rua",
             "isa", "maok"
         ]
-        self.ords = [
-            {
-                0: "",
-                1: "waiisa",
-                2: "wairua",
-                3: "waitelu",
-                4: "waiaat",
-                5: "wailima",
-                6: "waineen",
-                7: "waihitu",
-                8: "waiualu",
-                9: "waisia",
-            },
-            {
-                0: "",
-                1: "waisanulu",
-                2: "wairuanulu",
-                3: "waitelunulu",
-                4: "waiaatnulu",
-                5: "wailimanulu",
-                6: "waineenulu",
-                7: "waihitunulu",
-                8: "waiualunulu",
-                9: "waisianulu",
-            },
-            {
-                0: "",
-                1: "waiatus isa",
-                2: "waiatus rua",
-                3: "waiatus telu",
-                4: "waiatus aat",
-                5: "waiatus lima",
-                6: "waiatus neen",
-                7: "waiatus hitu",
-                8: "waiatus ualu",
-                9: "waiatus sia",
-            },
-        ]
-        self.thousand_separators = {
-            3: "wairihun",
-            6: "waimiliaun",
-            9: "wairihun waimiliaun",
-            12: "waibiliaun",
-            15: "wairihun waibiliaun"
-        }
         self.hundreds = {
             1: "atus",
             2: "atus rua",
@@ -131,17 +86,17 @@ class Num2Word_IDT(Num2Word_EU):
 
     def to_cardinal(self, value):
         result = super().to_cardinal(value)
-
-        for ext in (
-                'rihun', 'miliaun','miliaun rihun',
-                'biliaun', 'biliaun rihun'):
-            if re.match('.*{} resin \\w*entus? (?=.*resin)'.format(ext), result):
-                result = result.replace(
-                    f'{ext} resin', f'{ext}'
-                )
-
         return result
 
+    def to_ordinal(self, value):
+        self.verify_ordinal(value)
+        result = super().to_cardinal(value)
+        result = f"wai{result}"
+        return result
+
+    def to_ordinal_num(self, value):
+        self.verify_ordinal(value)
+        return f"{value}º"
 
     def to_year(self, val, longval=True):
         if val < 0:
