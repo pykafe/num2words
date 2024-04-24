@@ -74,13 +74,10 @@ CONVERTER_CLASSES = {
     'tg': lang_TG.Num2Word_TG(),
     'th': lang_TH.Num2Word_TH(),
     'tr': lang_TR.Num2Word_TR(),
-<<<<<<< HEAD
     'mgm': lang_MGM.Num2Word_MGM(),
     'mgm-NC': lang_MGM_NC.Num2Word_MGM_NC(),
     'mgm-S': lang_MGM_S.Num2Word_MGM_S(),
-=======
     'mkz': lang_MKZ.Num2Word_MKZ(),
->>>>>>> lang_makasae
     'nl': lang_NL.Num2Word_NL(),
     'uk': lang_UK.Num2Word_UK(),
     'te': lang_TE.Num2Word_TE(),
