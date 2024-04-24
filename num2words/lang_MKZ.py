@@ -27,7 +27,7 @@ DOLLAR = ('dolar', 'dolar')
 CENTS = ('sentavu', 'sentavu')
 
 
-class Num2Word_TET(Num2Word_EU):
+class Num2Word_MKZ(Num2Word_EU):
 
     CURRENCY_FORMS = {
         'AUD': (DOLLAR, CENTS),
@@ -42,33 +42,33 @@ class Num2Word_TET(Num2Word_EU):
 
     def setup(self):
         super().setup()
-        lows = ["quatr", "tr", "b", "m"]
+        lows = ["Kuatr", "tr", "b", "m"]
         self.high_numwords = self.gen_high_numwords([], [], lows)
-        self.negword = "menus "
-        self.pointword = "vírgula"
-        self.exclude_title = ["resin", "vírgula", "menus"]
+        self.negword = "hau hasai"
+        self.pointword = "virgula"
+        self.exclude_title = ["resi", "virgula", "hau hasai"]
 
         self.mid_numwords = [
-            (1000, "rihun"), (100, "atus"), (90, "sianulu"),
-            (80, "ualunulu"), (70, "hitunulu"), (60, "neenulu"),
-            (50, "limanulu"), (40, "haatnulu"), (30, "tolunulu"),
-            (20, "ruanulu")
+            (1000, "rihun"), (100, "rasa"), (90, "ruru siwa"),
+            (80, "ruru apo"), (70, "ruru pitu"), (60, "ruru daha"),
+            (50, "ruru lima"), (40, "ruru loloha"), (30, "ruru lolitu"),
+            (20, "ruru lolae")
         ]
         self.low_numwords = [
-            "sanulu",
-            "sia", "ualu", "hitu", "neen", "lima", "haat", "tolu", "rua",
-            "ida", "mamuk"
+            "ruru",
+            "siwa", "apo", "pitu", "daha", "lima", "loloha", "lolitu", "lolae",
+            "u", "gi losa"
         ]
         self.hundreds = {
-            1: "atus",
-            2: "atus rua",
-            3: "atus tolu",
-            4: "atus haat",
-            5: "atus lima",
-            6: "atus neen",
-            7: "atus hitu",
-            8: "atus ualu",
-            9: "atus sia",
+            1: "rasa",
+            2: "rasa lolae",
+            3: "rasa lolitu",
+            4: "rasa loloha",
+            5: "rasa lima",
+            6: "rasa daha",
+            7: "rasa pitu",
+            8: "rasa apo",
+            9: "rasa siwa",
         }
 
     def merge(self, curr, next):
@@ -79,7 +79,7 @@ class Num2Word_TET(Num2Word_EU):
 
         if nnum < cnum:
             if nnum < 10:
-                return ("%s resin %s" % (ctext, ntext), cnum + nnum)
+                return ("%s resi %s" % (ctext, ntext), cnum + nnum)
             else:
                 return ("%s %s" % (ctext, ntext), cnum + nnum)
 
@@ -91,76 +91,12 @@ class Num2Word_TET(Num2Word_EU):
 
     def to_ordinal(self, value):
         self.verify_ordinal(value)
-        try:
-            assert int(value) == value
-        except (ValueError, TypeError, AssertionError):
-            return self.to_cardinal_float(value)
-
-        out = ""
-        if value < 0:
-            value = abs(value)
-            out = "%s " % self.negword.strip()
-
-        if value >= self.MAXVAL:
-            raise OverflowError(self.errmsg_toobig % (value, self.MAXVAL))
-
-        val = self.splitnum(value)
-        outs = val
-        while len(val) != 1:
-            outs = []
-            left, right = val[:2]
-            if isinstance(left, tuple) and isinstance(right, tuple):
-                outs.append(self.merge(left, right))
-                if val[2:]:
-                    outs.append(val[2:])
-            else:
-                for elem in val:
-                    if isinstance(elem, list):
-                        if len(elem) == 1:
-                            outs.append(elem[0])
-                        else:
-                            outs.append(self.clean(elem))
-                    else:
-                        outs.append(elem)
-            val = outs
-
-        words, num = outs[0]
-
-        if num in [90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 5, 3, 2]:
-            words = 'da'+words+'k'
-        if num in [6,4]:
-            words = 'da'+words
-        if num == 1:
-            words = 'dahuluk'
-        if num in [900, 800, 700, 500, 300, 200, 100]:
-            words = 'dah'+words+'k'
-        if num in [600, 400]:
-            words = 'dah'+words
-
-        words_split = words.split()
-        if len(words_split) >= 3 and num < 100:
-            first_word = 'da'+words_split[0]
-            second_word = " ".join(words_split[1:])
-            if 'haat' in second_word or 'neen' in second_word:
-                words = first_word+" "+second_word
-            else:
-                words = first_word+" "+second_word+'k'
-
-        word_first =  'dah'+words_split[0]
-        if word_first == 'dahatus' and len(words_split) >=3:
-            word_second = " ".join(words_split[1:])
-            if 'haat' in word_second or 'neen' in word_second:
-                words = word_first+" "+word_second
-            else:
-                words = word_first+" "+word_second+'k'
-
-        if len(str(num)) > 3:
-            if 'haat' in words_split[-1:] or 'neen' in words_split[-1:]:
-                words = 'da'+words
-            else:
-                words = 'da'+words+'k'
-
-        return self.title(out + words)
+        result = super().to_cardinal(value)
+        if int(value) == 1:
+            result = "tu naa"
+        else:
+            result = f"tu {result}"
+        return result
 
     def to_ordinal_num(self, value):
         self.verify_ordinal(value)
@@ -168,7 +104,7 @@ class Num2Word_TET(Num2Word_EU):
 
     def to_year(self, val, longval=True):
         if val < 0:
-            return self.to_cardinal(abs(val)) + ' antes Kristu'
+            return self.to_cardinal(abs(val)) + ' Kristu neegu lafu'
         return self.to_cardinal(val)
 
     def to_currency(self, val, currency='USD', cents=True,
