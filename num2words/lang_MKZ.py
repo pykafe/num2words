@@ -104,7 +104,7 @@ class Num2Word_MKZ(Num2Word_EU):
 
     def to_year(self, val, longval=True):
         if val < 0:
-            return self.to_cardinal(abs(val)) + ' antes Kristu'
+            return self.to_cardinal(abs(val)) + ' Kristu neegu lafu'
         return self.to_cardinal(val)
 
     def to_currency(self, val, currency='USD', cents=True,
