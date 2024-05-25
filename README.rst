@@ -100,6 +100,7 @@ Besides the numerical argument, there are two main optional arguments, ``to:`` a
 * ``he`` (Hebrew)
 * ``hu`` (Hungarian)
 * ``id`` (Indonesian)
+* ``idt`` (Idate)
 * ``is`` (Icelandic)
 * ``it`` (Italian)
 * ``ja`` (Japanese)
